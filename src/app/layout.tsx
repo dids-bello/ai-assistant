@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 const interSans = Inter({
@@ -34,7 +35,14 @@ const RootLayout = ({
             <body
                 className={`${interSans.variable} ${sourceSerif.variable} ${jetBrainsMono.variable} antialiased`}
             >
-                <SidebarProvider defaultOpen>{children}</SidebarProvider>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <SidebarProvider defaultOpen>{children}</SidebarProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

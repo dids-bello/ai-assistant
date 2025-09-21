@@ -2,13 +2,17 @@ import {
     History,
     LucideIcon,
     MessageSquareMore,
+    Moon,
     Search,
+    Sun,
     X,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import Orb from './Orb';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Button } from './ui/button';
 import {
     Sidebar,
     SidebarContent,
@@ -53,7 +57,7 @@ const styles = {
         ),
     icon: 'w-8 h-8',
     close: 'w-6 h-6',
-    sidebarFooter: 'flex flex-row items-center',
+    avatarContainer: 'flex flex-row items-center gap-2',
     sideBarFooterName: (hide: boolean) =>
         cn(
             'transition-all duration-300 overflow-hidden whitespace-nowrap text-sm',
@@ -63,6 +67,7 @@ const styles = {
 
 const AppSidebar = () => {
     const { state, isMobile, setOpenMobile } = useSidebar();
+    const { setTheme, theme } = useTheme();
 
     return (
         <aside>
@@ -93,6 +98,7 @@ const AppSidebar = () => {
                                     <SidebarMenuButton
                                         asChild
                                         isActive={isActive}
+                                        variant="outline"
                                     >
                                         <Link href={item.location}>
                                             <item.icon
@@ -106,18 +112,44 @@ const AppSidebar = () => {
                         })}
                     </SidebarMenu>
                 </SidebarContent>
-                <SidebarFooter className={styles.sidebarFooter}>
-                    <Avatar className="rounded-md">
-                        <AvatarImage src="https://i.postimg.cc/K864V7Sg/Gemini-Generated-Image-wev0zwwev0zwwev0.png" />
-                        <AvatarFallback>AE</AvatarFallback>
-                    </Avatar>
-                    <span
-                        className={styles.sideBarFooterName(
-                            !isMobile && state === 'collapsed'
-                        )}
-                    >
-                        Aeon AI
-                    </span>
+                <SidebarFooter>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                variant="outline"
+                                onClick={() =>
+                                    setTheme(
+                                        theme === 'dark' ? 'light' : 'dark'
+                                    )
+                                }
+                            >
+                                {theme === 'light' ? (
+                                    <>
+                                        <Sun className={styles.icon} />
+                                        <span>Light</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Moon className={styles.icon} />
+                                        <span>Dark</span>
+                                    </>
+                                )}
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                    <div className={styles.avatarContainer}>
+                        <Avatar className="rounded-md">
+                            <AvatarImage src="https://i.postimg.cc/K864V7Sg/Gemini-Generated-Image-wev0zwwev0zwwev0.png" />
+                            <AvatarFallback>AE</AvatarFallback>
+                        </Avatar>
+                        <span
+                            className={styles.sideBarFooterName(
+                                !isMobile && state === 'collapsed'
+                            )}
+                        >
+                            Aeon AI
+                        </span>
+                    </div>
                 </SidebarFooter>
             </Sidebar>
         </aside>
