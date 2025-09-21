@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono,Source_Serif_4 } from 'next/font/google';
+import { Inter, JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
+import { SidebarProvider } from '@/components/ui/sidebar';
 
 const interSans = Inter({
     variable: '--font-inter-sans',
@@ -33,7 +34,7 @@ const RootLayout = ({
             <body
                 className={`${interSans.variable} ${sourceSerif.variable} ${jetBrainsMono.variable} antialiased`}
             >
-                {children}
+                <SidebarProvider defaultOpen>{children}</SidebarProvider>
             </body>
         </html>
     );

@@ -173,3 +173,7 @@
         @apply bg-background text-foreground;
     }
 }
+
+.orb {
+    @apply rounded-full bg-gradient-to-br from-background to-primary shadow-xl;
+}
