@@ -53,6 +53,12 @@ const styles = {
         ),
     icon: 'w-8 h-8',
     close: 'w-6 h-6',
+    sidebarFooter: 'flex flex-row items-center',
+    sideBarFooterName: (hide: boolean) =>
+        cn(
+            'transition-all duration-300 overflow-hidden whitespace-nowrap text-sm',
+            hide ? 'w-0 opacity-0' : 'w-full opacity-100'
+        ),
 };
 
 const AppSidebar = () => {
@@ -100,11 +106,18 @@ const AppSidebar = () => {
                         })}
                     </SidebarMenu>
                 </SidebarContent>
-                <SidebarFooter>
-                    <Avatar>
+                <SidebarFooter className={styles.sidebarFooter}>
+                    <Avatar className="rounded-md">
                         <AvatarImage src="https://i.postimg.cc/K864V7Sg/Gemini-Generated-Image-wev0zwwev0zwwev0.png" />
                         <AvatarFallback>AE</AvatarFallback>
                     </Avatar>
+                    <span
+                        className={styles.sideBarFooterName(
+                            !isMobile && state === 'collapsed'
+                        )}
+                    >
+                        Aeon AI
+                    </span>
                 </SidebarFooter>
             </Sidebar>
         </aside>
