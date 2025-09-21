@@ -1,0 +1,32 @@
+name: Development Build Check
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened, ready_for_review]
+        branches:
+            - main
+
+jobs:
+    build:
+        name: Build
+        runs-on: [self-hosted, Linux, ai-assistant]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Prettier Check
+              run: |
+                  npm install prettier
+                  npm run prettier
+            - name: Lint Check
+              run: |
+                  npm install eslint
+                  npm run lint:fix
+                  npm run lint
+            - name: Build Project Artifacts
+              run: npm run build
