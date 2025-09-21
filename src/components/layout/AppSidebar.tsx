@@ -10,9 +10,9 @@ import {
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import Orb from './Orb';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Button } from './ui/button';
+import Orb from '../Orb';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
 import {
     Sidebar,
     SidebarContent,
@@ -22,7 +22,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
     useSidebar,
-} from './ui/sidebar';
+} from '../ui/sidebar';
 
 interface MenuItem {
     title: string;

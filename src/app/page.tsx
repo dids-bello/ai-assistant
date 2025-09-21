@@ -1,7 +1,7 @@
 'use client';
 
 import { Menu } from 'lucide-react';
-import AppSidebar from '@/components/AppSidebar';
+import AppSidebar from '@/components/layout/AppSidebar';
 import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
 
 const Home = () => {
