@@ -1,22 +1,20 @@
 'use client';
 
-import { Menu } from 'lucide-react';
+import AppHeader from '@/components/layout/AppHeader';
 import AppSidebar from '@/components/layout/AppSidebar';
-import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
+
+const styles = {
+    container: 'flex min-h-screen p-2 w-full',
+    content: 'flex flex-col items-center sm:items-start flex-1',
+};
 
 const Home = () => {
-    const { isMobile, setOpenMobile } = useSidebar();
-
     return (
-        <div className="flex min-h-screen p-2">
+        <div className={styles.container}>
             <AppSidebar />
-            <main className="flex flex-col items-center sm:items-start">
-                {isMobile ? (
-                    <Menu onClick={() => setOpenMobile(true)} />
-                ) : (
-                    <SidebarTrigger />
-                )}
-            </main>
+            <div className={styles.content}>
+                <AppHeader />
+            </div>
         </div>
     );
 };

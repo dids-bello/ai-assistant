@@ -70,7 +70,7 @@ const AppSidebar = () => {
     const { setTheme, theme } = useTheme();
 
     return (
-        <aside>
+        <aside className="w-fit">
             <Sidebar collapsible="icon">
                 <SidebarHeader className={styles.sidebarHeader}>
                     <Orb />
