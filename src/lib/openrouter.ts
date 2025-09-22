@@ -1,6 +1,6 @@
 import { ModelType } from '@/constants/models';
 
-interface Message {
+export interface Message {
     role: 'system' | 'user' | 'assistant';
     content: string;
 }
@@ -8,6 +8,12 @@ interface Message {
 export interface OpenRouterRequest {
     model: ModelType;
     messages: Message[];
+}
+
+export interface ResponseContent {
+    text: string;
+    emotion: string;
+    reasoning: string;
 }
 
 export const sendRequest = async (request: OpenRouterRequest) => {
