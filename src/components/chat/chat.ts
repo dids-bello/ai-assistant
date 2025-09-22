@@ -1,9 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormEventHandler } from 'react';
+import { FormEventHandler, use } from 'react';
 import { SubmitHandler, useForm, UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
+import { ModelContext } from '@/context/ModelContext';
 
 const formSchema = z.object({
     content: z.string().min(1, {
@@ -19,6 +20,12 @@ interface ChatHook {
 }
 
 const useChat = (): ChatHook => {
+    const modelContext = use(ModelContext);
+
+    if (!modelContext) {
+        throw new Error('useChat hook must be used within a ModelProvider');
+    }
+
     const form = useForm<FormValueType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -28,7 +35,7 @@ const useChat = (): ChatHook => {
 
     const onSubmitHandler: SubmitHandler<FormValueType> = async (data) => {
         // TODO: Send request to OpenRouter
-        console.log(data);
+        console.log(data, modelContext.model);
     };
 
     return {

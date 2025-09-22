@@ -1,4 +1,3 @@
-import { on } from 'events';
 import { Brain, Mic, Paperclip, Plus, Send } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import AIOrb from '../AIOrb';
@@ -11,13 +10,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormMessage,
-} from '../ui/form';
+import { Form, FormControl, FormField, FormItem } from '../ui/form';
 
 const styles = {
     root: 'flex w-full flex-1 flex-col items-center space-y-6 justify-between md:justify-center',

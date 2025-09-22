@@ -1,14 +1,7 @@
-import { Menu, Sparkles } from 'lucide-react';
-import { models } from '@/constants/models';
+import { Menu } from 'lucide-react';
 import { Button } from '../ui/button';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '../ui/select';
 import { SidebarTrigger, useSidebar } from '../ui/sidebar';
+import ModelSelect from './ModelSelect';
 
 const styles = {
     container: 'w-full items-center flex flex-row justify-between',
@@ -28,19 +21,7 @@ const AppHeader = () => {
                 ) : (
                     <SidebarTrigger className={styles.icon} />
                 )}
-                <Select defaultValue={models[0].id}>
-                    <SelectTrigger size="sm">
-                        <Sparkles className={styles.icon} />
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {models.map((model) => (
-                            <SelectItem key={model.id} value={model.id}>
-                                <span>{model.name}</span>
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                <ModelSelect />
             </div>
             <Button>Upgrade</Button>
         </div>
