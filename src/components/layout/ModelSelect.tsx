@@ -1,5 +1,5 @@
 import { Sparkles } from 'lucide-react';
-import { use } from 'react';
+import { FunctionComponent, use } from 'react';
 import { models } from '@/constants/models';
 import { ModelContext } from '@/context/ModelContext';
 import {
@@ -14,7 +14,7 @@ const styles = {
     icon: 'w-8 h-8',
 };
 
-const ModelSelect = () => {
+const ModelSelect: FunctionComponent = () => {
     const modelContext = use(ModelContext);
 
     if (!modelContext) {

@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import Orb from '../Orb';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
@@ -65,7 +65,7 @@ const styles = {
         ),
 };
 
-const AppSidebar = () => {
+const AppSidebar: FunctionComponent = () => {
     const [mounted, setMounted] = useState(false);
 
     const { state, isMobile, setOpenMobile } = useSidebar();

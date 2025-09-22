@@ -1,4 +1,5 @@
 import * as motion from 'motion/react-client';
+import { FunctionComponent } from 'react';
 
 const styles = {
     container: 'relative w-40 h-40 flex items-center justify-center',
@@ -7,7 +8,7 @@ const styles = {
     ring2: 'absolute w-32 h-32 rounded-full border-2 border-ring/30',
 };
 
-const AIOrb = () => {
+const AIOrb: FunctionComponent = () => {
     return (
         <motion.div
             className={styles.container}

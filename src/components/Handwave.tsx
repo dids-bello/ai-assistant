@@ -1,6 +1,7 @@
 import * as motion from 'motion/react-client';
+import { FunctionComponent } from 'react';
 
-const Handwave = () => {
+const Handwave: FunctionComponent = () => {
     return (
         <motion.div
             className="text-4xl cursor-pointer select-none inline-block"

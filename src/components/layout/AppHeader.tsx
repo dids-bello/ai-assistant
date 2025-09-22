@@ -1,20 +1,22 @@
 import { Menu } from 'lucide-react';
+import { FunctionComponent } from 'react';
 import { Button } from '../ui/button';
 import { SidebarTrigger, useSidebar } from '../ui/sidebar';
 import ModelSelect from './ModelSelect';
 
 const styles = {
-    container: 'w-full items-center flex flex-row justify-between',
+    container:
+        'w-full items-center flex flex-row justify-between bg-background py-2',
     model: 'flex flex-row items-center gap-2',
     icon: 'w-8 h-8',
     dropdownIcon: 'ml-2 h-4 w-4',
 };
 
-const AppHeader = () => {
+const AppHeader: FunctionComponent = () => {
     const { isMobile, setOpenMobile } = useSidebar();
 
     return (
-        <div className={styles.container}>
+        <div id="header" className={styles.container}>
             <div className={styles.model}>
                 {isMobile ? (
                     <Menu onClick={() => setOpenMobile(true)} />
