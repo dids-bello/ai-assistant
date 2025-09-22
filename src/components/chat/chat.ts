@@ -93,6 +93,10 @@ const useChat = (): ChatHook => {
 
             const response = await res.json();
 
+            if (!response.choices[0]) {
+                throw new Error('No readable response from OpenRouter');
+            }
+
             const textResponse = extractAssistantResponse(
                 response.choices[0].message.content
             ).text;
