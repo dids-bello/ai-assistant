@@ -78,7 +78,7 @@ const AppSidebar: FunctionComponent = () => {
     if (!mounted) return null;
 
     return (
-        <aside>
+        <aside className="shrink-0">
             <Sidebar collapsible="icon">
                 <SidebarHeader className={styles.sidebarHeader}>
                     <Orb />

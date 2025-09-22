@@ -6,7 +6,7 @@ import ModelSelect from './ModelSelect';
 
 const styles = {
     container:
-        'w-full items-center flex flex-row justify-between bg-background py-2',
+        'w-full items-center flex flex-row justify-between bg-background py-2 top-0 sticky',
     model: 'flex flex-row items-center gap-2',
     icon: 'size-8',
     dropdownIcon: 'ml-2 size-4',

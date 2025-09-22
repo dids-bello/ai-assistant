@@ -18,7 +18,7 @@ import { Form, FormControl, FormField, FormItem } from '../ui/form';
 const styles = {
     root: (hasHistory: boolean) =>
         cn(
-            'flex w-full flex-1 flex-col items-center space-y-6 justify-between md:max-w-[75%] md:mx-auto',
+            'flex w-full flex-1 flex-col items-center space-y-6 justify-between md:max-w-[75%] md:mx-auto overflow-hidden',
             !hasHistory && 'md:justify-center'
         ),
     orbContainer:
@@ -40,7 +40,7 @@ const MainChat: FunctionComponent = () => {
     const hasHistory = chatHistory.length >= 1;
 
     return (
-        <main className={styles.root(hasHistory)}>
+        <div className={styles.root(hasHistory)}>
             {!hasHistory ? (
                 <div className={styles.orbContainer}>
                     <AIOrb />
@@ -117,7 +117,7 @@ const MainChat: FunctionComponent = () => {
                     </div>
                 </form>
             </Form>
-        </main>
+        </div>
     );
 };
 

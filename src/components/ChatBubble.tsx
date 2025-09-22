@@ -14,7 +14,7 @@ const styles = {
     aeon: 'text-xs font-bold ml-1',
 
     // chat box styles
-    chatBox: 'flex flex-col gap-4 w-full flex-1',
+    chatBox: 'flex flex-col gap-4 w-full flex-1 overflow-y-auto',
 
     // typing indicator styles
     typingIndicator: 'flex gap-1 items-center h-6',
