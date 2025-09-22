@@ -35,7 +35,8 @@ const styles = {
 };
 
 const MainChat: FunctionComponent = () => {
-    const { chatHistory, form, onSubmit, isTyping } = useChat();
+    const { chatHistory, form, onSubmit, isTyping, handleTextAreaKeyDown } =
+        useChat();
 
     const hasHistory = chatHistory.length >= 1;
 
@@ -76,6 +77,7 @@ const MainChat: FunctionComponent = () => {
                                         autoResize
                                         placeholder="Ask me anything"
                                         className={styles.textArea}
+                                        onKeyDown={handleTextAreaKeyDown}
                                         {...field}
                                     />
                                 </FormControl>

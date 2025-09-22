@@ -26,6 +26,9 @@ interface ChatHook {
     onSubmit: FormEventHandler<HTMLFormElement>;
     chatHistory: OpenRouterMessage[];
     isTyping: boolean;
+    handleTextAreaKeyDown: (
+        event: React.KeyboardEvent<HTMLTextAreaElement>
+    ) => void;
 }
 
 const useChat = (): ChatHook => {
@@ -64,6 +67,15 @@ const useChat = (): ChatHook => {
         return JSON.parse(res);
     };
 
+    const handleTextAreaKeyDown = (
+        event: React.KeyboardEvent<HTMLTextAreaElement>
+    ) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            onSubmitHandler(form.getValues());
+        }
+    };
+
     const onSubmitHandler: SubmitHandler<FormValueType> = async (data) => {
         setIsTyping(true);
         form.reset();
@@ -93,8 +105,13 @@ const useChat = (): ChatHook => {
 
             const response = await res.json();
 
-            if (!response.choices[0]) {
-                throw new Error('No readable response from OpenRouter');
+            console.log(response);
+
+            if (response.error) {
+                throw new Error(
+                    'No readable response from OpenRouter',
+                    response.error
+                );
             }
 
             const textResponse = extractAssistantResponse(
@@ -119,6 +136,7 @@ const useChat = (): ChatHook => {
         onSubmit: form.handleSubmit(onSubmitHandler),
         chatHistory: chatHistory.filter((message) => message.role != 'system'),
         isTyping,
+        handleTextAreaKeyDown,
     };
 };
 
