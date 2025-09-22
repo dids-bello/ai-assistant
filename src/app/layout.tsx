@@ -31,15 +31,14 @@ const RootLayout = ({
     children: React.ReactNode;
 }>) => {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body
                 className={`${interSans.variable} ${sourceSerif.variable} ${jetBrainsMono.variable} antialiased`}
             >
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
-                    enableSystem
                     disableTransitionOnChange
+                    defaultTheme="light"
                 >
                     <SidebarProvider defaultOpen>{children}</SidebarProvider>
                 </ThemeProvider>

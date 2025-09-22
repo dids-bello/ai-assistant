@@ -69,7 +69,7 @@ const AppSidebar = () => {
     const { setTheme, theme } = useTheme();
 
     return (
-        <aside>
+        <aside suppressHydrationWarning>
             <Sidebar collapsible="icon">
                 <SidebarHeader className={styles.sidebarHeader}>
                     <Orb />
