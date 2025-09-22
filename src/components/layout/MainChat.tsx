@@ -1,6 +1,8 @@
+import { on } from 'events';
 import { Brain, Mic, Paperclip, Plus, Send } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import AIOrb from '../AIOrb';
+import useChat from '../chat/chat';
 import Handwave from '../Handwave';
 import { Button } from '../ui/button';
 import {
@@ -9,6 +11,13 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormMessage,
+} from '../ui/form';
 
 const styles = {
     root: 'flex w-full flex-1 flex-col items-center space-y-6 justify-between md:justify-center',
@@ -24,6 +33,8 @@ const styles = {
 };
 
 const MainChat = () => {
+    const { form, onSubmit } = useChat();
+
     return (
         <main className={styles.root}>
             <div className="flex flex-col justify-center items-center space-y-2 flex-1 md:flex-none">
@@ -37,42 +48,63 @@ const MainChat = () => {
                 <h4 className={styles.greetingText2}>How can I help you?</h4>
             </div>
 
-            <div id="chat" className={styles.textareaContainer}>
-                <Textarea
-                    autoResize
-                    placeholder="Ask me anything"
-                    className={styles.textArea}
-                />
+            <Form {...form}>
+                <form
+                    id="chat"
+                    className={styles.textareaContainer}
+                    onSubmit={onSubmit}
+                >
+                    <FormField
+                        control={form.control}
+                        name="content"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormControl>
+                                    <Textarea
+                                        autoResize
+                                        placeholder="Ask me anything"
+                                        className={styles.textArea}
+                                        {...field}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        )}
+                    />
 
-                <div className={styles.buttons}>
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
+                    <div className={styles.buttons}>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="outline" size="icon">
+                                    <Plus />
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="start">
+                                <DropdownMenuItem>
+                                    <Paperclip />
+                                    <span>Upload a file</span>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Brain />
+                                    <span>Deep Research</span>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+
+                        <div className={styles.voiceAndSend}>
                             <Button variant="outline" size="icon">
-                                <Plus />
+                                <Mic />
                             </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start">
-                            <DropdownMenuItem>
-                                <Paperclip />
-                                <span>Upload a file</span>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <Brain />
-                                <span>Deep Research</span>
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-
-                    <div className={styles.voiceAndSend}>
-                        <Button variant="outline" size="icon">
-                            <Mic />
-                        </Button>
-                        <Button size="icon">
-                            <Send />
-                        </Button>
+                            <Button
+                                size="icon"
+                                type="submit"
+                                disabled={!form.formState.isDirty}
+                            >
+                                <Send />
+                            </Button>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </form>
+            </Form>
         </main>
     );
 };

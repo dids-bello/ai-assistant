@@ -1,5 +1,10 @@
+export type ModelType =
+    | 'deepseek/deepseek-chat-v3.1:free'
+    | 'x-ai/grok-4-fast:free'
+    | 'openai/gpt-oss-20b:free';
+
 interface Model {
-    id: string;
+    id: ModelType;
     name: string;
 }
 export const models: Model[] = [
