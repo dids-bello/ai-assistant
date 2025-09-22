@@ -12,7 +12,6 @@ import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 import Orb from '../Orb';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
-import { Button } from '../ui/button';
 import {
     Sidebar,
     SidebarContent,
@@ -52,7 +51,7 @@ const styles = {
     sidebarHeader: 'flex flex-row items-center',
     sidebarName: (hide: boolean) =>
         cn(
-            'transition-all duration-300 overflow-hidden whitespace-nowrap text-xl font-bold',
+            'transition-all duration-300 overflow-hidden whitespace-nowrap',
             hide ? 'w-0 opacity-0' : 'w-full opacity-100'
         ),
     icon: 'w-8 h-8',
@@ -70,7 +69,7 @@ const AppSidebar = () => {
     const { setTheme, theme } = useTheme();
 
     return (
-        <aside className="w-fit">
+        <aside>
             <Sidebar collapsible="icon">
                 <SidebarHeader className={styles.sidebarHeader}>
                     <Orb />

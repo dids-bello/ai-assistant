@@ -1,0 +1,80 @@
+import { Brain, Mic, Paperclip, Plus, Send } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
+import AIOrb from '../AIOrb';
+import Handwave from '../Handwave';
+import { Button } from '../ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
+
+const styles = {
+    root: 'flex w-full flex-1 flex-col items-center space-y-6 justify-between md:justify-center',
+    greeting: 'flex flex-row items-center gap-2 w-full',
+    greetingText: 'text-4xl',
+    greetingText2: 'text-xl text-muted-foreground',
+    textareaContainer:
+        'p-4 flex flex-col gap-2 border border-border rounded-md w-full md:max-w-2xl',
+    textArea:
+        'outline-0 border-0 shadow-none focus:outline-none focus-visible:ring-0',
+    buttons: 'flex gap-2 justify-between',
+    voiceAndSend: 'flex gap-2 items-center',
+};
+
+const MainChat = () => {
+    return (
+        <main className={styles.root}>
+            <div className="flex flex-col justify-center items-center space-y-2 flex-1 md:flex-none">
+                <AIOrb />
+
+                <div className={styles.greeting}>
+                    <h1 className={styles.greetingText}>Hi, I&apos;m Aeon</h1>
+                    <Handwave />
+                </div>
+
+                <h4 className={styles.greetingText2}>How can I help you?</h4>
+            </div>
+
+            <div id="chat" className={styles.textareaContainer}>
+                <Textarea
+                    autoResize
+                    placeholder="Ask me anything"
+                    className={styles.textArea}
+                />
+
+                <div className={styles.buttons}>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="icon">
+                                <Plus />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start">
+                            <DropdownMenuItem>
+                                <Paperclip />
+                                <span>Upload a file</span>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                                <Brain />
+                                <span>Deep Research</span>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+
+                    <div className={styles.voiceAndSend}>
+                        <Button variant="outline" size="icon">
+                            <Mic />
+                        </Button>
+                        <Button size="icon">
+                            <Send />
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+};
+
+export default MainChat;
