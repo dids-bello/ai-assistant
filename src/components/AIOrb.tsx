@@ -2,10 +2,10 @@ import * as motion from 'motion/react-client';
 import { FunctionComponent } from 'react';
 
 const styles = {
-    container: 'relative w-40 h-40 flex items-center justify-center',
-    orb: 'w-16 h-16 orb',
-    ring1: 'absolute w-24 h-24 rounded-full border-2 border-ring/40',
-    ring2: 'absolute w-32 h-32 rounded-full border-2 border-ring/30',
+    container: 'relative size-40 flex items-center justify-center',
+    orb: 'size-16 orb',
+    ring1: 'absolute size-24 rounded-full border-2 border-ring/40',
+    ring2: 'absolute size-32 rounded-full border-2 border-ring/30',
 };
 
 const AIOrb: FunctionComponent = () => {

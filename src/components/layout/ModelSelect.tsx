@@ -10,10 +10,6 @@ import {
     SelectValue,
 } from '../ui/select';
 
-const styles = {
-    icon: 'w-8 h-8',
-};
-
 const ModelSelect: FunctionComponent = () => {
     const modelContext = use(ModelContext);
 
@@ -26,7 +22,7 @@ const ModelSelect: FunctionComponent = () => {
     return (
         <Select defaultValue={selectedModel} onValueChange={changeModel}>
             <SelectTrigger size="sm">
-                <Sparkles className={styles.icon} />
+                <Sparkles />
                 <SelectValue />
             </SelectTrigger>
             <SelectContent>

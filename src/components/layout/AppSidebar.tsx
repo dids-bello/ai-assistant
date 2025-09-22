@@ -55,8 +55,8 @@ const styles = {
             'transition-all duration-300 overflow-hidden whitespace-nowrap',
             hide ? 'w-0 opacity-0' : 'w-full opacity-100'
         ),
-    icon: 'w-8 h-8',
-    close: 'w-6 h-6',
+    icon: 'size-8',
+    close: 'size-6',
     avatarContainer: 'flex flex-row items-center gap-2',
     sideBarFooterName: (hide: boolean) =>
         cn(

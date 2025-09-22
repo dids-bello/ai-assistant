@@ -8,8 +8,8 @@ const styles = {
     container:
         'w-full items-center flex flex-row justify-between bg-background py-2',
     model: 'flex flex-row items-center gap-2',
-    icon: 'w-8 h-8',
-    dropdownIcon: 'ml-2 h-4 w-4',
+    icon: 'size-8',
+    dropdownIcon: 'ml-2 size-4',
 };
 
 const AppHeader: FunctionComponent = () => {

@@ -19,7 +19,7 @@ const styles = {
     // typing indicator styles
     typingIndicator: 'flex gap-1 items-center h-6',
     typingIndicatorText: 'text-sm text-muted-foreground',
-    typingIndicatorSpan: 'w-1 h-1 bg-muted-foreground rounded-full',
+    typingIndicatorSpan: 'size-1 bg-muted-foreground rounded-full',
 };
 
 interface ChatBubbleProps {
