@@ -4,7 +4,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 import AIOrb from '../AIOrb';
 import useChat from '../chat/chat';
-import { ChatBox } from '../ChatBubble';
+import { ChatBox } from '../ChatBox';
 import Handwave from '../Handwave';
 import { Button } from '../ui/button';
 import {

@@ -90,7 +90,9 @@ const useChat = (): ChatHook => {
 
         const request: OpenRouterRequest = {
             model: modelContext.model,
-            messages: updatedChatHistory.slice(-MAX_MESSAGES), // Only send the last MAX_MESSAGES
+            messages: updatedChatHistory
+                .filter((msg) => msg.role != 'error')
+                .slice(-MAX_MESSAGES), // Only send the last MAX_MESSAGES
         };
 
         // send the request to OpenRouter
@@ -106,6 +108,7 @@ const useChat = (): ChatHook => {
             const response = await res.json();
 
             if (response.error) {
+                console.log(response);
                 throw new Error(response.error);
             }
 

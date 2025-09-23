@@ -1,5 +1,5 @@
 import * as motion from 'motion/react-client';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect, useRef } from 'react';
 import { Message, MessageRole } from '@/lib/openrouter';
 import { cn } from '@/lib/utils';
 
@@ -85,6 +85,12 @@ const ChatBox: FunctionComponent<ChatBoxProps> = ({
     messages,
     isTyping = false,
 }) => {
+    const chatEndRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
+
     return (
         <div id="chatbox" className={styles.chatBox}>
             {messages.map((message, index) => (
@@ -92,6 +98,8 @@ const ChatBox: FunctionComponent<ChatBoxProps> = ({
             ))}
 
             {isTyping && <TypingIndicator />}
+
+            <div id="chatbox-bottom" ref={chatEndRef} />
         </div>
     );
 };
