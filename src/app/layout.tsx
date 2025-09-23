@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     title: 'Aeon AI Assistant',
     description:
         'Meet Aeon, the AI designed to think, assist, and evolve with you. From managing tasks to answering questions, Aeon is your ever-present digital companion, blending cutting-edge technology with seamless, human-like interaction. Whether you’re exploring ideas, organizing your day, or diving into creative projects, Aeon adapts to your needs, learns from your patterns, and helps you stay ahead.',
+    icons: {
+        icon: '/logo.svg',
+    },
 };
 
 const RootLayout = ({
