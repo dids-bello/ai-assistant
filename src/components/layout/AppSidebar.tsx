@@ -93,31 +93,35 @@ const AppSidebar: FunctionComponent = () => {
                         <X
                             className={styles.close}
                             onClick={() => setOpenMobile(false)}
+                            aria-label="Close sidebar"
                         />
                     )}
                 </SidebarHeader>
                 <SidebarContent className="p-2">
                     <SidebarMenu>
-                        {menuItems.map((item) => {
-                            const isActive = item.location === '/';
+                        <nav>
+                            {menuItems.map((item) => {
+                                const isActive = item.location === '/';
 
-                            return (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton
-                                        asChild
-                                        isActive={isActive}
-                                        variant="outline"
-                                    >
-                                        <Link href={item.location}>
-                                            <item.icon
-                                                className={styles.icon}
-                                            />
-                                            <span>{item.title}</span>
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            );
-                        })}
+                                return (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton
+                                            asChild
+                                            isActive={isActive}
+                                            variant="outline"
+                                            aria-label={item.title}
+                                        >
+                                            <Link href={item.location}>
+                                                <item.icon
+                                                    className={styles.icon}
+                                                />
+                                                <span>{item.title}</span>
+                                            </Link>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                );
+                            })}
+                        </nav>
                     </SidebarMenu>
                 </SidebarContent>
                 <SidebarFooter>
@@ -130,6 +134,7 @@ const AppSidebar: FunctionComponent = () => {
                                         theme === 'dark' ? 'light' : 'dark'
                                     )
                                 }
+                                aria-label="Toggle theme"
                             >
                                 {theme === 'light' ? (
                                     <>
@@ -147,7 +152,10 @@ const AppSidebar: FunctionComponent = () => {
                     </SidebarMenu>
                     <div className={styles.avatarContainer}>
                         <Avatar className="rounded-md">
-                            <AvatarImage src="https://i.postimg.cc/K864V7Sg/Gemini-Generated-Image-wev0zwwev0zwwev0.png" />
+                            <AvatarImage
+                                src="https://i.postimg.cc/K864V7Sg/Gemini-Generated-Image-wev0zwwev0zwwev0.png"
+                                alt="Aeon AI"
+                            />
                             <AvatarFallback>AE</AvatarFallback>
                         </Avatar>
                         <span

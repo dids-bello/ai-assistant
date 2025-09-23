@@ -43,7 +43,12 @@ interface ChatBubbleProps {
 
 const ChatBubble: FunctionComponent<ChatBubbleProps> = ({ message }) => {
     return (
-        <div className={styles.chatBubbleWrapper}>
+        <div
+            className={styles.chatBubbleWrapper}
+            aria-label={
+                message.role === 'user' ? 'Your message' : 'Aeon message'
+            }
+        >
             {message.role === 'assistant' ||
                 (message.role === 'error' && (
                     <div className={styles.aeon}>Aeon</div>
@@ -57,7 +62,7 @@ const ChatBubble: FunctionComponent<ChatBubbleProps> = ({ message }) => {
 
 const TypingIndicator: FunctionComponent = () => {
     return (
-        <div className={styles.typingIndicator}>
+        <div className={styles.typingIndicator} aria-live="polite">
             <span className={styles.typingIndicatorText}>Aeon is thinking</span>
             {Array.from({ length: 3 }).map((_, index) => (
                 <motion.span

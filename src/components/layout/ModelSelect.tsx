@@ -21,7 +21,7 @@ const ModelSelect: FunctionComponent = () => {
 
     return (
         <Select defaultValue={selectedModel} onValueChange={changeModel}>
-            <SelectTrigger size="sm">
+            <SelectTrigger size="sm" aria-label="Select a model">
                 <Sparkles />
                 <SelectValue />
             </SelectTrigger>

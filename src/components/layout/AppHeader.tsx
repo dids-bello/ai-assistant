@@ -16,7 +16,7 @@ const AppHeader: FunctionComponent = () => {
     const { isMobile, setOpenMobile } = useSidebar();
 
     return (
-        <div id="header" className={styles.container}>
+        <header id="header" className={styles.container}>
             <div className={styles.model}>
                 {isMobile ? (
                     <Menu onClick={() => setOpenMobile(true)} />
@@ -25,8 +25,8 @@ const AppHeader: FunctionComponent = () => {
                 )}
                 <ModelSelect />
             </div>
-            <Button>Upgrade</Button>
-        </div>
+            <Button aria-label="Upgrade">Upgrade</Button>
+        </header>
     );
 };
 

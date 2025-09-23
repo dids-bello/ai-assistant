@@ -13,7 +13,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
-import { Form, FormControl, FormField, FormItem } from '../ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '../ui/form';
 
 const styles = {
     root: (hasHistory: boolean) =>
@@ -72,8 +72,15 @@ const MainChat: FunctionComponent = () => {
                         name="content"
                         render={({ field }) => (
                             <FormItem>
+                                <FormLabel
+                                    htmlFor="content"
+                                    className="sr-only"
+                                >
+                                    Type your message
+                                </FormLabel>
                                 <FormControl>
                                     <Textarea
+                                        id="content"
                                         autoResize
                                         placeholder="Ask me anything"
                                         className={styles.textArea}
@@ -87,7 +94,10 @@ const MainChat: FunctionComponent = () => {
 
                     <div className={styles.buttons}>
                         <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
+                            <DropdownMenuTrigger
+                                asChild
+                                aria-label="More options"
+                            >
                                 <Button variant="outline" size="icon">
                                     <Plus />
                                 </Button>
@@ -105,13 +115,18 @@ const MainChat: FunctionComponent = () => {
                         </DropdownMenu>
 
                         <div className={styles.voiceAndSend}>
-                            <Button variant="outline" size="icon">
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                aria-label="Dictate"
+                            >
                                 <Mic />
                             </Button>
                             <Button
                                 size="icon"
                                 type="submit"
                                 disabled={!form.formState.isDirty}
+                                aria-label="Send message"
                             >
                                 <Send />
                             </Button>
