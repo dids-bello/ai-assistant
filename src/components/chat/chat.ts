@@ -105,13 +105,8 @@ const useChat = (): ChatHook => {
 
             const response = await res.json();
 
-            console.log(response);
-
             if (response.error) {
-                throw new Error(
-                    'No readable response from OpenRouter',
-                    response.error
-                );
+                throw new Error(response.error);
             }
 
             const textResponse = extractAssistantResponse(
@@ -124,8 +119,14 @@ const useChat = (): ChatHook => {
             };
 
             appendToChatHistory(assistantMessage); // Append the assistant message to the chat history
-        } catch (error) {
-            console.error('Error sending request to OpenRouter:', error);
+        } catch {
+            const errorMessage: Message = {
+                role: 'error',
+                content:
+                    'Oops! I ran into an issue processing that. Could you try again?',
+            };
+
+            appendToChatHistory(errorMessage); // Append the error message to the chat history
         }
 
         setIsTyping(false);

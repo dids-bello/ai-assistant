@@ -1,15 +1,30 @@
 import * as motion from 'motion/react-client';
 import { FunctionComponent } from 'react';
-import { Message } from '@/lib/openrouter';
+import { Message, MessageRole } from '@/lib/openrouter';
 import { cn } from '@/lib/utils';
 
 const styles = {
     // chat bubble styles
-    chatBubble: (isUser: boolean) =>
-        cn(
+    chatBubble: (role: MessageRole) => {
+        let userStyle = '';
+
+        switch (role) {
+            case 'user':
+                userStyle = 'bg-primary text-primary-foreground ml-auto';
+                break;
+            case 'error':
+                userStyle = 'bg-destructive text-destructive-foreground';
+                break;
+            default:
+                userStyle = 'bg-muted';
+                break;
+        }
+
+        return cn(
             'flex flex-col max-w-[75%] gap-2 rounded-md p-4 text-sm text-justify',
-            isUser ? 'bg-primary text-primary-foreground ml-auto' : 'bg-muted'
-        ),
+            userStyle
+        );
+    },
     chatBubbleWrapper: 'flex flex-col gap-0.5',
     aeon: 'text-xs font-bold ml-1',
 
@@ -29,10 +44,11 @@ interface ChatBubbleProps {
 const ChatBubble: FunctionComponent<ChatBubbleProps> = ({ message }) => {
     return (
         <div className={styles.chatBubbleWrapper}>
-            {message.role === 'assistant' && (
-                <div className={styles.aeon}>Aeon</div>
-            )}
-            <div className={styles.chatBubble(message.role === 'user')}>
+            {message.role === 'assistant' ||
+                (message.role === 'error' && (
+                    <div className={styles.aeon}>Aeon</div>
+                ))}
+            <div className={styles.chatBubble(message.role)}>
                 {message.content}
             </div>
         </div>

@@ -1,7 +1,9 @@
 import { ModelType } from '@/constants/models';
 
+export type MessageRole = 'system' | 'user' | 'assistant' | 'error';
+
 export interface Message {
-    role: 'system' | 'user' | 'assistant';
+    role: MessageRole;
     content: string;
 }
 
