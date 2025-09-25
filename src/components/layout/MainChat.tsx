@@ -81,6 +81,7 @@ const MainChat: FunctionComponent = () => {
                                 <FormControl>
                                     <Textarea
                                         id="content"
+                                        data-testid="chat-input"
                                         autoResize
                                         placeholder="Ask me anything"
                                         className={styles.textArea}
@@ -127,6 +128,7 @@ const MainChat: FunctionComponent = () => {
                                 type="submit"
                                 disabled={!form.formState.isDirty}
                                 aria-label="Send message"
+                                data-testid="send-button"
                             >
                                 <Send />
                             </Button>
