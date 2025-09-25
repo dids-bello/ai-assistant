@@ -108,7 +108,6 @@ const useChat = (): ChatHook => {
             const response = await res.json();
 
             if (response.error) {
-                console.log(response);
                 throw new Error(response.error);
             }
 

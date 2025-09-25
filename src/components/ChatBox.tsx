@@ -62,7 +62,11 @@ const ChatBubble: FunctionComponent<ChatBubbleProps> = ({ message }) => {
 
 const TypingIndicator: FunctionComponent = () => {
     return (
-        <div className={styles.typingIndicator} aria-live="polite">
+        <div
+            className={styles.typingIndicator}
+            aria-live="polite"
+            data-testid="typing-indicator"
+        >
             <span className={styles.typingIndicatorText}>Aeon is thinking</span>
             {Array.from({ length: 3 }).map((_, index) => (
                 <motion.span
@@ -97,9 +101,13 @@ const ChatBox: FunctionComponent<ChatBoxProps> = ({
     }, [messages]);
 
     return (
-        <div id="chatbox" className={styles.chatBox}>
+        <div id="chatbox" data-testid="chatbox" className={styles.chatBox}>
             {messages.map((message, index) => (
-                <ChatBubble key={index} message={message} />
+                <ChatBubble
+                    key={index}
+                    message={message}
+                    data-testid="chat-bubble"
+                />
             ))}
 
             {isTyping && <TypingIndicator />}
